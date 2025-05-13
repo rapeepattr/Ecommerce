@@ -256,11 +256,12 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "mysql://root:9772A84A@localhost:3306/ecommerceapp"
+        "value": null
       }
     }
   },
