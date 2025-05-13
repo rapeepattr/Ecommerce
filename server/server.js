@@ -7,6 +7,7 @@ const port = '3000'
 
 // Middleware
 app.use(cors())
+app.use(express.json())
 app.use(morgan('dev'))
 
 // Routes
