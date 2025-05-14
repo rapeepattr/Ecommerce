@@ -42,14 +42,18 @@ exports.login = async (req, res) => {
 			}
 		})
 
-		if (!user || !user.enabled) {
-			return res.status(400).json({message: "User not found"})
+		if (!user) {
+			return res.status(400).json({ message: "User not found" })
+		}
+
+		if (!user.enabled) {
+			return res.status(400).json({ message: "Cannot access this user" })
 		}
 
 		const isMatch = await bcrypt.compare(password, user.password)
-		
+
 		if (!isMatch) {
-			return res.status(400).json({message: "Invalid password"})
+			return res.status(400).json({ message: "Invalid password" })
 		} else {
 			const payload = {
 				id: user.id,
